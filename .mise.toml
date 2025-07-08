@@ -1,0 +1,16 @@
+[tools]
+python = "3.13"
+ruff = "latest"
+uv = "latest"
+
+[settings]
+python.uv_venv_auto = true
+
+[tasks]
+lint = "ruff check ."
+"lint:fix" = "ruff check --fix ."
+test = "PYTHONPATH=. pytest tests/"
+cli = "python -m sfsym"
+
+[tasks.check]
+depends = ["lint", "test"]
